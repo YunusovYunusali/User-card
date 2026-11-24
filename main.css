@@ -31,7 +31,7 @@ button {
 
 header {
   padding: 20px;
-  background-color: green;
+  background-color: rgb(115, 189, 151);
 }
 
 nav {
@@ -43,7 +43,13 @@ nav {
     color: white;
     font-size: 22px;
     font-weight: 600;
+   
   }
+}
+.link{
+   border: 1px solid ;
+    padding: 10px 20px;
+    border-radius: 20px;
 }
 
 .logo a {
