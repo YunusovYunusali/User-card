@@ -92,8 +92,9 @@ nav {
 }
 
 .user-card {
+  position: relative;
   width: 300px;
-  padding: 20px;
+  padding: 56px 20px 20px;
   background-color: #ffffff;
   border: 1px solid black;
   border-radius: 12px;
@@ -105,6 +106,26 @@ nav {
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+}
+
+.user-card__actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.user-card__edit,
+.user-card__delete {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  color: #4b5563;
+  cursor: pointer;
 }
 
 .user-card:hover {

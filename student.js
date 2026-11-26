@@ -4,6 +4,7 @@ const userswrapperEl = document.querySelector('.users-container');
 
 
 function updateUi(arr){
+    userswrapperEl.innerHTML = "";
     arr.forEach((item)=> {
         const {fullName, id, age, course, grade, isGraduated} = item;
         const nameParts = fullName.trim().split(/\s+/);
@@ -13,6 +14,17 @@ function updateUi(arr){
 
         userswrapperEl.innerHTML +=`
          <div class="user-card" data-id="${id}">
+
+ <button onclick="deleteUser(${id})"  type="button" class="user-card__delete" data-delete-id="${id}" aria-label="Delete ${name}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 6h18"/>
+      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+      <line x1="10" x2="10" y1="11" y2="17"/>
+      <line x1="14" x2="14" y1="11" y2="17"/>
+    </svg>
+  </button>
+
             <div class="user-card__header">
               <div class="user-card__avatar">${initials}</div>
               <div class="user-card__info">
@@ -90,9 +102,14 @@ let UserStudent={
     isGraduated:formData.get('isGraduated') ? 'Bitirgan' :`O'qiyapti`,
 
 };
-   
+     students.push(UserStudent);
+     updateUi(students);
    console.log(UserStudent);
-   
     formEl.reset();
     closeModal();
 });
+window.deleteUser = function (id){
+    let findStudent = students.findIndex((item)=> item.id ==id);
+    students.splice(findStudent ,1 );
+    updateUi(students)
+}
